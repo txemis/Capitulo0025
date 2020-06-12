@@ -18,14 +18,7 @@ export default class Pag2 extends Component
                     </button>
                 </Header>
                 {/*<h1>Hola desde Página 2!</h1>*/}
-                <Visor>
-                    <div class="wrapper">
-                        <div id="notSupported" > Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or
-                            later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</div>
-                        <div>
-                        </div>
-                    </div>
-                   
+                <Visor>                    
                 </Visor>
             </div>
         );

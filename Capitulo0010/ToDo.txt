@@ -1,0 +1,9 @@
+Pendiente implementar la advertencia!!! de compatible:
+
+    <div id="notSupported" > Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or
+                            later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</div>
+                    
+
+1. Graficar datos
+2. Buscar Hardware
+                    

@@ -1,0 +1,40 @@
+se añade Babel
+
+
+"dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+
+
+    cambiado layout de webpack.config.js:
+
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                        loader: 'babel-loader' ,
+                        options: {
+                            presets: ['es2015','react'],
+                            plugins: [/**'react-hot-loader/babel',**/'transform-class-properties']
+                        }
+                }
+                
+            },
+            /**
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
+            }
+            **/
+        ]
+        
+    },
+
