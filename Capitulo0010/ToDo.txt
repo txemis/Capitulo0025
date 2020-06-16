@@ -4,6 +4,5 @@ Pendiente implementar la advertencia!!! de compatible:
                             later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</div>
                     
 
-1. Graficar datos
+1. Graficar datos en pág sig. --> s/ejemplo
 2. Buscar Hardware
-                    

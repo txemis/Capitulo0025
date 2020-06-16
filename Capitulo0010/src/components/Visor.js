@@ -68,8 +68,9 @@ const Visor = () => {
     };
     */
 
+    var aviso = "Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags";
 
-    //if ('serial' in navigator) {
+    if ( 'serial' in navigator ) {
     //const notSupported = document.getElementById('notSupported');
     //console.log('No soportado',notSupported);
     //notSupported.classList.add('hidden');
@@ -77,8 +78,10 @@ const Visor = () => {
     //notSupported.style('visibility', 'hidden');
     //notSupported.style="display:none";
     //notSupported.style="visibility:hidden";
-
-    //}
+    let Serie = true;
+    console.log('Si soporta puerto serie');
+    var aviso = '';
+    }
 //const log = document.getElementById("log")
 
 
@@ -89,7 +92,7 @@ const Visor = () => {
 
     return (
             <div className="wrapper">
-                {/*<div id="notSupported" className="hidden">Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or
+                {/*<div id="notSupported" >Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or
                     later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</div>
                 */}
                     {/*
@@ -97,7 +100,10 @@ const Visor = () => {
                     {connex.check()}
                     </div>
                     */}                    
-                    <div>
+                    <div id="notSupported">
+                    <h1>{aviso}</h1>
+                    </div>                  
+                <div>
                     <button className="red" id="connect" onClick={connex.conexion}>Connect</button>
                     {/*<button className="red" id="connect" onClick="handleConnect()">Connect</button>*/}
                     {/*<button className="red" id="connect" onClick="handleConnect()">Connect</button>*/}
