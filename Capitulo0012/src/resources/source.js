@@ -54,7 +54,7 @@ conexion:  function() {
     document.getElementById("connect").disabled = true;
 */
 
-    var sensors;
+    //var sensors;
     var sensors = {
         temp: {current: 0, high: 0, low: 100 },
         humidity: {current: 0, high: 0, low: 100},
@@ -76,14 +76,54 @@ conexion:  function() {
     var port;
     navigator.serial.requestPort()
 //        .then(resut => {port.open({ baudrate: 9600 })});
-        .then(port => {console.log('pedido:', port)});
+        .then(port => {
+                        port.open({ baudrate: 9600 })
+                        .then(() => {
+                                    console.log(port);
+                                    let decoder = new TextDecoderStream();
+                                    port.readable.pipeTo(decoder.writable)
+                                    //.then(() =>   {
+                                                        let inputStream = decoder.readable;
+                                                        let reader = inputStream.getReader();
+                                                         //inputStream.getReader()
+                                                        //.then(reader => {
+                                                                            console.log(reader);
+                                                                            readLoop(reader);
+                                                                          //})
+                                                        //console.log(reader);
+                                                        //readLoop();
+                                                   // })
+
+
+
+                                    })
+                        //console.log(port);
+                        
+                        
+
+                        //var portread = port.readable
+                        //.then(res => {console.log(res)})
+                        //console.log(portread);
+                        
+                        //port.readable.pipeTo(decoder.writable)
+
+                        /*
+                        let inputStream = decoder.readable;
+
+                        let reader = inputStream.getReader();
+                        readLoop();
+                        */
+
+                    })
+        .catch(err => {console.log(err);});
     //console.log('Open', port);
 
 
-
+/*
     let decoder = new TextDecoderStream();
     let inputDone = port.readable.pipeTo(decoder.writable);
     let inputStream = decoder.readable;
+*/
 
 /*    const encoder = new TextEncoderStream();
     outputDone = encoder.readable.pipeTo(port.writable);
@@ -91,20 +131,45 @@ conexion:  function() {
 
 */
 
-
+/*
     let reader = inputStream.getReader();
     readLoop();
+*/
 
-
-    async function readLoop() {
+//    async function readLoop() {
+    function readLoop(reader) {
         console.log('Readloop');
 
         while (true) {
-            const { value, done } = await reader.read();
+            //const { value, done } = await reader.read();
+            //const { value, done };
+            //console.log(reader.read());
+            reader.read()
+            .then((value, done) => {
+
             console.log('value', value);
             console.log('done', done);
 
+            if (value) {
+                log.textContent += value;
+                log.scrollTop = log.scrollHeight;
+                datosPaDonut(value);
+            }
 
+/*            if (done) {
+                console.log('[readLoop] DONE', done);
+                reader.releaseLock();
+                break;
+            }
+*/
+
+            })
+
+//            console.log('value', value);
+//            console.log('done', done);
+
+
+/*            
             if (value) {
                 log.textContent += value;
                 log.scrollTop = log.scrollHeight;
@@ -115,6 +180,7 @@ conexion:  function() {
                 reader.releaseLock();
                 break;
             }
+*/            
         }
     }
 
