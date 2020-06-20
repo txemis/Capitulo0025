@@ -94,47 +94,10 @@ conexion:  function() {
                                                         //readLoop();
                                     //                })
 
-
-
                                     })
-                        //console.log(port);
-                        
-                        
-
-                        //var portread = port.readable
-                        //.then(res => {console.log(res)})
-                        //console.log(portread);
-                        
-                        //port.readable.pipeTo(decoder.writable)
-
-                        /*
-                        let inputStream = decoder.readable;
-
-                        let reader = inputStream.getReader();
-                        readLoop();
-                        */
-
                     })
         .catch(err => {console.log(err);});
-    //console.log('Open', port);
 
-
-/*
-    let decoder = new TextDecoderStream();
-    let inputDone = port.readable.pipeTo(decoder.writable);
-    let inputStream = decoder.readable;
-*/
-
-/*    const encoder = new TextEncoderStream();
-    outputDone = encoder.readable.pipeTo(port.writable);
-    outputStream = encoder.writable;
-
-*/
-
-/*
-    let reader = inputStream.getReader();
-    readLoop();
-*/
 
 //    async function readLoop() {
     function readLoop(reader) {
@@ -157,77 +120,23 @@ conexion:  function() {
                 if (value.value) {
                     log.textContent += value.value;
                     log.scrollTop = log.scrollHeight;
+                    //datosPaDonut(value.value);
                     return leer();
                 } else {
                     return value.done;
+                    /* //Para salir del bucle:
+                    if (value.done) {
+                        console.log('[readLoop] DONE', value.done);
+                        reader.releaseLock();
+                        break;
+                    }
+                    */
                 }
 
 
 
             })
         }
-
-
-
-
-/*
-
-        let continuar = true;
-        while (continuar) {
-            continuar = false;        
-//        while (true) {
-            //const { value, done } = await reader.read();
-            //const { value, done };
-            //console.log(reader.read());
-            reader.read()
-            .then(value  => {
-//            .then((value, done) => {
-
-            continuar = true;
-            console.log('value', value.value);
-            console.log('done', value.done);
-            
-
-            if (value.value) {
-                log.textContent += value.value;
-                log.scrollTop = log.scrollHeight;
-                
-
-//                datosPaDonut(value);
-            }
-
-/*            //Para salir del bucle:
-            if (value.done) {
-                console.log('[readLoop] DONE', value.done);
-                reader.releaseLock();
-                break;
-            }
-*/
-
-
-
-/*            })
-
-//            console.log('value', value);
-//            console.log('done', done);
-
-
-/*            
-            if (value) {
-                log.textContent += value;
-                log.scrollTop = log.scrollHeight;
-                datosPaDonut(value);
-            }
-            if (done) {
-                console.log('[readLoop] DONE', done);
-                reader.releaseLock();
-                break;
-            }
-*/            
-/*        }
-
-*/
-
     }
 
 
