@@ -157,6 +157,7 @@ conexion:  function() {
                 if (value.value) {
                     log.textContent += value.value;
                     log.scrollTop = log.scrollHeight;
+                    datosPaDonut(value.value);
                     return leer();
                 } else {
                     return value.done;
@@ -233,20 +234,45 @@ conexion:  function() {
 
 
     function datosPaDonut(valor) {
+        var cadena = [];
+        var arrastre = [];
+        var terna = [];
+        var pasaterna = [];
 
-        //var cadena;
-        //cadena += valor;
-        //console.log('cadena:', cadena)
-        //datos = datos.replace(/(\r\n|\n|\r)/gm,"");
         valor = valor.replace(/(\r\n|\n|\r)/gm,"");
-        var dataArray = valor.split(',');
-        //console.log('Hola desde datosPaDonut, valor=', valor);
-        //console.log('Hola desde datosPaDonut, dataArray=', dataArray);
+        var dataArray = valor.split(',');   //Ojo hay un problema q junta la última cifra de una cadena con la primera
+        var dataArray = dataArray.filter(function(value) {
+            return value !== "";
+        });
+        //Hacer paquetes de 3:
+        cadena = arrastre.concat(dataArray);
+        if( cadena.length == 3){
+            terna = cadena;
+            arrastre = [];
+        }
+        else if( cadena.length > 3){
+            terna = cadena.slice(0, 4);
+            arrastre = cadena.slice(4);
+        }
+        else if( cadena.length < 3){
+            arrastre = cadena;
+            terna = [];  //da problemas con valores bajos
+        }
 
-        var hasChanged = updateValues(dataArray);
+
+        console.log('Hola desde datosPaDonut, dataArray=', dataArray);
+
+        if(terna.length == 3){
+            console.log('terna=', terna);
+            pasaterna = terna;    
+        }
+
+
+        
+        var hasChanged = updateValues(pasaterna);
         if (hasChanged >0){
-            //PaDonut("datos", sensors);
-            console.log("datos:", sensors);
+            PaGraficoDonut("datos", sensors);
+//            console.log("datos:", sensors);
         }
 
 
@@ -265,12 +291,13 @@ conexion:  function() {
             }
             if(tempSensor.high < newData){
                 sensors[key].high = data[index];
-                //changed = 1;
+                changed = 1;
             }
             if(tempSensor.low > newData ){
                 sensors[key].low = data[index];
             }
         });
+        console.log("datos:", sensors);
         return changed;
     }
 
