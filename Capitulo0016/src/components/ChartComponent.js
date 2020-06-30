@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {PM}  from 'react-environment-chart';
 
 
-export class ChartComponent extends Component {
+export default class ChartComponent extends Component {
 
     constructor(props){
         super(props)

@@ -25,8 +25,8 @@ export default class Pag4 extends Component {
                         </button>
                     </Link>
                 </Header>
-                <h1>Hola desde Página 4!</h1>
                 <ChartContainer />
+                {/*<h1>Hola desde Página 4!</h1>*/}
             </div>
         )
     }

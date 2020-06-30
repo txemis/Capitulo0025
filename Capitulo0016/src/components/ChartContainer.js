@@ -5,23 +5,39 @@ import {PM}  from 'react-environment-chart';
 // A function that returns a random number from 0 to 280
 const randomNum     = () => Math.floor(Math.random() * 280);
 
-
-export class ChartContainer extends Component {
-
+/*setInterval(() => {
+    const randomNum  = () => Math.floor(Math.random() * 280);
+}, 3000);
+*/
 /*
+var azar
+
+setInterval(() => {
+    const azar = randomNum();
+}, 3000);
+*/
+
+
+export default class ChartContainer extends Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
-            chartData: []
+            chartData: [] 
         }
     }
 
-        componentDidMount() {
-            const sensorData = randomNum;
-            this.setState({ chartData: sensorData });
-            console.log('sensorData=', sensorData);
-        }
-*/    
+    componentDidMount() {
+                setInterval(() => {
+                //console.log('randomNum=',randomNum());
+                const sensorData = randomNum();
+                //const sensorData = azar;
+                this.setState({ chartData: sensorData });
+                console.log('sensorData=', sensorData);
+                },1000);
+            }
+    
 
 /*
     componentDidMount() {
@@ -41,8 +57,34 @@ export class ChartContainer extends Component {
 
     render() {
         //const { chartData } = this.state;
+/*
+        const miestilo = {
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center",            
+        }
+*/
+        const miestilo = {
+            display: "flex",
+            slignItems: "center",
+            justifyContent: "center",
+        }
+
         return (
-                <h1>Hola desde ChartContainer!!</h1>
+            <div>
+                <div style={miestilo}>
+                    {/*<h1>Hola desde ChartContainer!!</h1>
+                    //<PM value={80} />*/}
+                    <PM style={miestilo} value={this.state.chartData} />
+                    {/*<p style={{"text-align": "center"}}>{this.state.chartData}/280</p>*/}
+                    {/*<p>{this.state.chartData}/280</p>*/}
+                    {/*<p style={{textAlign: "center"}}>{this.state.chartData}/280</p>*/}
+                    {/*</PM>/*<ChartComponent chartData={chartData} />*/}
+                    {/*<p style={{textAlign: "center"}}>{this.state.chartData}/280</p>*/}
+                </div>
+                <p style={{textAlign: "center"}}>{this.state.chartData}/280</p>
+            </div>
         )
     }
 }
