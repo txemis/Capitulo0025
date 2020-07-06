@@ -1,55 +1,31 @@
 import React, { Component } from 'react';
 import {PM}  from 'react-environment-chart';
-//import ChartComponent from './ChartComponent';
-//import { hola } from '../resources/hola';
+import { conexion } from '../resources/source1';
 
+/*
 var connex = require("../resources/source"); //Un array de funciones ????
 var misDatos = connex.losDatos();
-//console.log('mi_kktua:', connex.conexion().kktua);
-//connex.hola();
-//console.log(hola);
-//hola();
-//console.log(hola().hola);
-//var mi_hola = require("../resources/hola");
-//var algo = mi_hola.audioService //.publica //.cogeValor();
+*/
+var misDatos = conexion().temperatura;
+console.log('temperatura recibida:', misDatos);
 
 /*
-import masHola from '../resources/hola2';
-var algo = masHola.publica();
-console.log('cogido:', masHola);
-console.log('cogido:', algo);
-*/
-
 import { hola3 } from '../resources/hola3';
-
-//hola3()
-//var recibido = hola3().publica;
 var recibido = hola3().cogeValor();
 console.log('recibido=', recibido);
+*/
 
-
-
+/*
 console.log('connex:', connex);
 console.log('misDatos=', misDatos);
+*/
+
 
 // A function that returns a random number from 0 to 280
-const randomNum     = () => Math.floor(Math.random() * 280);
-
-/*setInterval(() => {
-    const randomNum  = () => Math.floor(Math.random() * 280);
-}, 3000);
-*/
-/*
-var azar
-
-setInterval(() => {
-    const azar = randomNum();
-}, 3000);
-*/
+//const randomNum     = () => Math.floor(Math.random() * 280);
 
 
 export default class ChartContainer extends Component {
-
 
     constructor(props) {
         super(props);
@@ -86,21 +62,11 @@ export default class ChartContainer extends Component {
 */
 
     render() {
-        //const { chartData } = this.state;
-/*
-        const miestilo = {
-            display: "block",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",            
-        }
-*/
         const miestilo = {
             display: "flex",
             slignItems: "center",
             justifyContent: "center",
         }
-
         return (
             <div>
                 <div style={miestilo}>

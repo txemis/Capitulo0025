@@ -1,0 +1,24 @@
+Como subir un proyecto local a github
+https://gist.github.com/cgonzalezdai/cc33db72a6fe5178637aabb562eae35c
+
+
+git init
+
+git add .
+
+git commit -m "first commit"
+
+git remote add origin https://github.com/NOMBRE_USUARIO/NOMBRE_PROYECTO.git
+
+git push -u origin master
+
+-----------------------------
+
+recrear y crear  node_modules:
+npm install
+
+yarn start   --> problemas por 'react-hot-loader' ?????
+    1.dejarlo para desarrollo asistido (si lo puedo arreglar)
+    2.eliminarlo y trabajar sin él
+    
+yarn build   --> OK

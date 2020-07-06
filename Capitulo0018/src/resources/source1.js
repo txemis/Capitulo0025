@@ -1,55 +1,4 @@
-module.exports = {
-
-/*Pendiente implementar la advertencia!!!*/
-
-
-    /*
-if ('serial' in navigator) {
-    const notSupported = document.getElementById('notSupported');
-    notSupported.classList.add('hidden');
-}
-*/
-
-//const log = document.getElementById("log")
-
-//var temperatura; //valor de retorno, variable global
-
-
-
-hola: function(){
-    console.log('Aqui en sources!');
-    alert('Aqui en sources!'); 
-},
-
-check: function(){
-    if ('serial' in navigator) {
-        const notSupported = document.getElementById('notSupported');
-        //notSupported.classList.add('hidden');
-        console.log('No soportado',notSupported);
-        notSupported.style('display', 'block');
-}
-
-},
-
-/*
-
-
-function send() {
-    const toSend = document.getElementById("input").value
-    writeToStream(toSend)
-    document.getElementById("input").value = ""
-
-}
-
-function handle(e) {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-        send();
-    }
-}
-*/
-//conexion:  async function() {
-conexion:  function() {
+export function conexion() {
 /*    const inputField = document.getElementById("input");
     inputField.disabled = false;
     inputField.focus();
@@ -168,73 +117,8 @@ conexion:  function() {
                 } else {
                     return value.done;
                 }
-
-
-
             })
         }
-
-
-
-
-/*
-
-        let continuar = true;
-        while (continuar) {
-            continuar = false;        
-//        while (true) {
-            //const { value, done } = await reader.read();
-            //const { value, done };
-            //console.log(reader.read());
-            reader.read()
-            .then(value  => {
-//            .then((value, done) => {
-
-            continuar = true;
-            console.log('value', value.value);
-            console.log('done', value.done);
-            
-
-            if (value.value) {
-                log.textContent += value.value;
-                log.scrollTop = log.scrollHeight;
-                
-
-//                datosPaDonut(value);
-            }
-
-/*            //Para salir del bucle:
-            if (value.done) {
-                console.log('[readLoop] DONE', value.done);
-                reader.releaseLock();
-                break;
-            }
-*/
-
-
-
-/*            })
-
-//            console.log('value', value);
-//            console.log('done', done);
-
-
-/*            
-            if (value) {
-                log.textContent += value;
-                log.scrollTop = log.scrollHeight;
-                datosPaDonut(value);
-            }
-            if (done) {
-                console.log('[readLoop] DONE', done);
-                reader.releaseLock();
-                break;
-            }
-*/            
-/*        }
-
-*/
-
     }
 
 
@@ -314,49 +198,11 @@ conexion:  function() {
         console.log('temperatura actual=', temperatura)
     }
 
+return({
+    temperatura: temperatura,
+})
+
 
 /*
 */
-},
-
-losDatos: function(){
-    var temperatura = 80; //prueba de lectura
-    return temperatura;
-},
-
-/*
-function writeToStream(line) {
-    const writer = outputStream.getWriter();
-    console.log('[SEND]', line);
-    writer.write(line + '\r');
-    writer.releaseLock();
-}
-
-*/
-/*
-async function readLoop() {
-    console.log('Readloop');
-
-    while (true) {
-        const { value, done } = await reader.read();
-        console.log('value', value);
-        console.log('done', done);
-
-
-        if (value) {
-            log.textContent += value;
-            log.scrollTop = log.scrollHeight;
-        }
-        if (done) {
-            console.log('[readLoop] DONE', done);
-            reader.releaseLock();
-            break;
-        }
-    }
-}
-*/
-/*
-
-*/
-
 }
