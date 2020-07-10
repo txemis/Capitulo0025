@@ -6,8 +6,9 @@ export function conexion( abiertoYa) {
     document.getElementById("sendButton").disabled = false;
     document.getElementById("connect").disabled = true;
 */
-    var temperatura; //valor de retorno, variable global????
-    //console.log('temperatura actual2=', temperatura);
+    //this.conexion = 'Hola desde conexion!'
+    var temperatura; //valor de retorno, variable global
+    //var temperatura = 100; //valor de retorno, variable global
 
     //var sensors;
     var sensors = {
@@ -180,22 +181,17 @@ export function conexion( abiertoYa) {
     }
 
     function PaGraficoDonut(valorSensors){
-        temperatura = valorSensors.temp.current;
-        //temperatura = 150;
+        //temperatura = valorSensors.temp.current;
+        temperatura = 150;
         console.log('temperatura actual=', temperatura)
     }
 
-console.log('temperatura actual2=', temperatura);
-
-
 return({
     //temperatura: temperatura,
-    
-    temperatur: function() {
-        //temperatura = 200;
-        console.log('temperatura actual3=', temperatura); 
+    temperatura: function() {
+        console.log('temperatura actual2=', temperatura); 
         return temperatura
-    } 
+    }
 })
 
 

@@ -1,32 +1,38 @@
 //crear con "function-bassed component"
-//para actualizar valores necesitamos
-//un cambio de estado que actualizará el DOM
-//Creo que no actualiza los hijos.
 import React, { Component } from 'react';
 import Header from './Header';
-import ChartContainer from './ChartContainer';
+import Panel from './Panel';
 
 import { Link } from 'react-router-dom';
 
-//inicialmente era función y no clase, creo que se
-//podría haber dejado.
 
-export default class Pag4 extends Component {
+/*
+handleLogout = () => {
+    this.props.history.push('/');
+}
+*/
 
-
-    render() {
-        return (
+const Pag4 = () => {
+    return (
             <div id="ChatContainer">
                 <Header>
+                    {/*
+                    <button className="red" onClick={this.handleLogout}>
+                        Pag anterior
+                    </button>
+                    */}
                     <Link to="/">
                         <button className="red">
                             Back Pag
                         </button>
                     </Link>
                 </Header>
-                <ChartContainer />
                 {/*<h1>Hola desde Página 4!</h1>*/}
+                <Panel>
+                </Panel>
             </div>
-        )
-    }
-}
+        );
+
+};
+
+export default Pag4;
