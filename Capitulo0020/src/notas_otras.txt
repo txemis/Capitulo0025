@@ -1,0 +1,39 @@
+https://stackoverflow.com/questions/43780163/javascript-while-loop-where-condition-is-a-promise
+
+implementado recursividad:
+
+function doSomething() {
+    // some async operation that returns a promise
+}
+
+function next() {
+    return doSomething.then(function(result) {
+        if (result < someValue) {
+             // run the operation again
+             return next();
+        } else {
+             return result;
+        }
+    });
+}
+
+next().then(function(result) {
+      // process final result here
+}).catch(function(err) {
+    // process error here
+});
+
+
+
+
+
+
+se podría:
+EDIT: With ES7, you can use async and await. It won't really be a while loop, but it will obviate the need for a while loop because you don't have to "poll" the asynchronous value at all.
+
+async function f() {
+   let value = await somePromise;
+   // put code here to execute after the promise
+   console.log(value);
+}
+

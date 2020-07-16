@@ -2,8 +2,7 @@
 
 body {
   height: 100vh;
-  /*background: linear-gradient(to bottom, #FD8271 , #A62824);*/
-  background: linear-gradient(to bottom, #71f8fd , #0c5586);  
+  background: linear-gradient(to bottom, #FD8271 , #A62824);
   font-family: 'Khula', sans-serif;
   color: #2f2f2f;
   overflow: hidden;
@@ -239,27 +238,4 @@ button.red:focus {
 .error {
   margin: 5px 0;
   color: red;
-}
-
-/* Estilos para Visor*/
-.wrapper {
-    width: 100%;
-    margin: 0 auto;
-}
-#input {
-    width: 100%;
-}
-
-#log {
-    height: 45vh;
-/*    height: 80%;  */
-    width: 100%;
-    overflow: scroll;
-    background-color: black;
-    color:white;
-    white-space: pre;
-}
-
-.hidden {
-    display: none;
 }
