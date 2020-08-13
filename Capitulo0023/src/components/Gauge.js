@@ -5,6 +5,16 @@ import { scaleOrdinal } from 'd3-scale'
 import { schemePaired } from 'd3-scale-chromatic'
 //import { pie } from 'd3-shape'
 import { arc } from 'd3'
+//import styled from 'styled-components'  //Para react >= 16.3, yo: "15.6.1"
+import "./styles.css";
+
+/*
+const textAmount = styled.div`
+    opacity: 0;
+    font-size: 30px;
+    font-weight: 300;
+` */
+
 
 export default class Gauge extends Component {
     constructor(props) {
@@ -113,6 +123,7 @@ export default class Gauge extends Component {
         const totalText = d3.select(".total");
         amountText
             .style("opacity", 0)
+            .attr("transform", `translate(100, 0)`)
             .transition()
             .duration(1000)
             .delay(1500)

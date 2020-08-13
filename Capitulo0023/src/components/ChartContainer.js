@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import { Temperature }  from 'react-environment-chart';
 //import { Humidity }  from 'react-environment-chart';
 //import { Tvoc }  from 'react-environment-chart';
-import { Electricity }  from 'react-environment-chart';
+//import { Electricity }  from 'react-environment-chart';
 //import { PM }  from 'react-environment-chart';
 //import { Intensity }  from 'react-environment-chart';
 import { conexion } from '../resources/source1';
@@ -104,7 +104,7 @@ export default class ChartContainer extends Component {
 
                 this.setState({ chartDataTemp: sensorDataTemp, chartDataHumi: sensorDataHumi, chartDataBatt: sensorDataBatt });
                 console.log('sensorDataTemp=', sensorDataTemp);
-                },3000);
+                },30000);
             }
     
 
