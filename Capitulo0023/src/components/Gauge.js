@@ -7,23 +7,32 @@ import { schemePaired } from 'd3-scale-chromatic'
 import { arc } from 'd3'
 
 export default class Gauge extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         const gaugeProps = {
             tau: Math.PI,
             radius: 80,
             padding: 30,
-            //amount: this.props.value,
-            amount: 75,
-            total: 100
+            //amount: 75,
+            amount : this.props.value,
+            total: 45
         };
+
+        //const amount = this.props.value;
+        console.log('amount1=', gaugeProps.amount);
+
         gaugeProps.boxSize = (gaugeProps.radius + gaugeProps.padding) * 2;
         gaugeProps.ratio = gaugeProps.amount / gaugeProps.total;
     }
-    
-    componentDidMount() {
-        const amount = 75,
-              total = 100,
+
+    //componentDidMount() {
+    componentDidUpdate() {    
+    //UNSAFE_componentWillReceiveProps(newProps) {
+        const amount = this.props.value;
+        console.log('amount2=', amount);
+        //const amount = newProps.value,
+        const total = 45,
+              //amount = 75,
               tau = Math.PI,
               radius = 80,
               padding = 30,
@@ -41,7 +50,7 @@ export default class Gauge extends Component {
         } = this.props; //no tiene sentido, sólo paso "value" ????
         */
 
-        const value = this.props; //para cuando le pase y no 33 fijo
+        //const value = this.props.value; //para cuando le pase y no 33 fijo
 
         this.renderSVG(radius, boxSize, tau, ratio);
         this.renderText(amount, total);
@@ -67,7 +76,7 @@ export default class Gauge extends Component {
         const arc = d3
             .arc()
             .innerRadius(radius)
-            .outerRadius(radius - 10)
+            .outerRadius(radius - 30)
             .startAngle(0);
 
         //Initial SVG render
@@ -108,7 +117,7 @@ export default class Gauge extends Component {
             .duration(1000)
             .delay(1500)
             .style("opacity", 1)
-            .text(`${amount}GB`);
+            .text(`${amount}°C`);
 
         totalText
             .style("opacity", 0)
@@ -116,7 +125,7 @@ export default class Gauge extends Component {
             .duration(1000)
             .delay(1700)
             .style("opacity", 1)
-            .text(`/${total}GB`);
+            .text(`/${total}°C`);
     }
 
     render() {

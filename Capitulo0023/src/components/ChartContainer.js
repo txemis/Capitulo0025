@@ -103,8 +103,8 @@ export default class ChartContainer extends Component {
                 const sensorDataBatt = this.MiBateria.bateria;
 
                 this.setState({ chartDataTemp: sensorDataTemp, chartDataHumi: sensorDataHumi, chartDataBatt: sensorDataBatt });
-                console.log('sensorData=', sensorData);
-                },1000);
+                console.log('sensorDataTemp=', sensorDataTemp);
+                },3000);
             }
     
 
@@ -145,13 +145,13 @@ export default class ChartContainer extends Component {
                     {/*<h1>Hola desde ChartContainer!!</h1>
                     //<PM value={80} />*/}
 
-                    {/*<Gauge value={this.state.chartDataTemp}/>*/}
-                    <Gauge value={33}/>
+                    <Gauge value={this.state.chartDataTemp}/>
+                    {/*<Gauge value={75} />*/}
 
                     
                     {/*<Temperature height="225" value={this.state.chartDataTemp/2}/>*/}
                     {/*<Electricity height="175" value={this.state.chartDataHumi}/>*/}
-                    <Electricity  value={this.state.chartDataHumi}/>
+                    {/*<Electricity  value={this.state.chartDataTemp}/>*/}
                     {/*<Tvoc height="175" value={this.state.chartDataBatt/100}/>*/}
                 
                     {/*<Donut data={30} text="Hola" />*/}
