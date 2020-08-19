@@ -23,10 +23,12 @@ export default class Gauge extends Component {
             tau: Math.PI,
             radius: 80,
             padding: 30,
+            instantAngle: Math.PI/3,
             //amount: 75,
             amount : this.props.value,
             total: 45
         };
+        //var Pila = [];
 
         //const amount = this.props.value;
         console.log('amount1=', gaugeProps.amount);
@@ -36,19 +38,29 @@ export default class Gauge extends Component {
     }
 
     //componentDidMount() {
-    componentDidUpdate() {    
+    componentDidUpdate(prevProps) {    
     //UNSAFE_componentWillReceiveProps(newProps) {
         const amount = this.props.value;
         console.log('amount2=', amount);
         //const amount = newProps.value,
+
+        //var Pila = null;
+
+        const instantAngle = prevProps.value;
+
         const total = 45,
               //amount = 75,
               tau = Math.PI,
               radius = 80,
               padding = 30,
-              //instantAngle = 0, //mi valor inicial
+              //instantAngle = Math.PI/3, //mi valor inicial
               boxSize = (radius + padding) * 2,
               ratio = amount / total;
+
+        //Pila[1] = Pila[0];
+        //var instantAngle = Pila[1] * Math.PI/180;
+        //Pila[0] = amount;
+        console.log("La Pila=", amount, instantAngle);
 
         /*const {
             tau,
@@ -63,20 +75,24 @@ export default class Gauge extends Component {
 
         //const value = this.props.value; //para cuando le pase y no 33 fijo
 
-        this.renderSVG(radius, boxSize, tau, ratio);
+        this.renderSVG(radius, boxSize, tau, instantAngle, ratio);
         this.renderText(amount, total);
     }
 
-    renderSVG(radius, boxSize, tau, /*instantAngle,*/ ratio) {
+    renderSVG(radius, boxSize, tau, instantAngle, ratio) {
 
         // Transition function
         const arcTween = function (newAngle) {
         return function (d) {
             const interpolate = d3.interpolate(d.endAngle, newAngle);
+            
+            
+            console.log("endAngle=", d.endAngle);
 
             return function (t) {
             d.endAngle = interpolate(t);
             //instantAngle = endAngle;
+            //console.log("endAngle=", endAngle);
 
             return arc(d);
             };
@@ -110,13 +126,15 @@ export default class Gauge extends Component {
         //Foreground Arc
         this.svg
             .append("path")
-            .datum({ endAngle: 0 })
-            //.datum({ endAngle: instantAngle })
+            //.datum({ endAngle: 0 })
+            //.datum({ endAngle: Math.PI / 2 })
+            .datum({ endAngle: instantAngle })
             .style("fill", "#00a68f")
             .attr("transform", "rotate(-90)") //mi giro
             .transition()
             .duration(1000)
-            .delay(1000)
+            //.delay(1000)
+            .delay(0)
             .attrTween("d", arcTween(ratio * tau));
 
     }

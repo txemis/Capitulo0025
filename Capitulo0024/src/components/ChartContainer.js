@@ -63,15 +63,16 @@ export default class ChartContainer extends Component {
             console.log('vector=', dataArray);
 
             if (dataArray.length =3 ) {
-                this.MiTemperatura.temperatura = dataArray[0];
+                //this.MiTemperatura.temperatura = dataArray[0]; //filtro los mayores de 45
                 this.MiHumedad.humedad = dataArray[1];
                 this.MiBateria.bateria = dataArray[2];
+                dataArray[0] > 45 ? this.MiTemperatura.temperatura = 0 : this.MiTemperatura.temperatura = dataArray[0];
             }
 
             console.log('mi_temperatura=', this.MiTemperatura.temperatura);
 
 
-        },3000)
+        },6000)
     
 
     //traerDatos()
